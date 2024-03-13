@@ -1,19 +1,10 @@
-fn insertion_sort(mut array: Vec<i32>) -> Vec<i32> {
-    let n = array.len();
-    // Проходим по массиву, начиная со второго элемента
+fn insertion_sort(arr: &mut [i32]) {
+    let n = arr.len();
     for i in 1..n {
         let mut j = i;
-        // Текущий элемент, который нужно вставить на правильное место
-        let key = array[i];
-        // Пока индекс j находится в пределах массива и элемент с индексом j больше key
-        while j > 0 && array[j - 1] > key {
-            // Перемещаем элемент вправо
-            array[j] = array[j - 1];
-            // Переходим к следующему предыдущему элементу
+        while j > 0 && arr[j - 1] > arr[j] {
+            arr.swap(j, j - 1);
             j -= 1;
         }
-        // Вставляем key на правильное место
-        array[j] = key;
     }
-    array
 }
